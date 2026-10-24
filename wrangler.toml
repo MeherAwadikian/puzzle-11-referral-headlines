@@ -1,0 +1,14 @@
+name = "puzzle-11-referral-headlines"
+main = "src/worker.js"
+compatibility_date = "2024-09-01"
+
+# DB: Supabase Postgres (project qqncjqapqaubbbnkzhjb), table `referral_copy`.
+# Not Cloudflare D1 — this account is already at the D1-database account limit
+# (10/10 existing databases, confirmed via `wrangler d1 create` erroring with
+# "maximum number of D1 databases"). Supabase Postgres fills the same role:
+# a real external database, read via PostgREST with the project's anon key,
+# writes routed through two SECURITY DEFINER RPC functions so the anon key
+# can never bypass RLS directly.
+[vars]
+SUPABASE_URL = "https://qqncjqapqaubbbnkzhjb.supabase.co"
+SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFxbmNqcWFwcWF1YmJibmt6aGpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4MTIyMDksImV4cCI6MjA5MzM4ODIwOX0.ZTSlyALClHBUbVWW2G8zMB6fgyDuPCrgyU4n5HM1JyM"
